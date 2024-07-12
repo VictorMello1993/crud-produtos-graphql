@@ -1,12 +1,12 @@
 ## Desafio 1
-- Configurar o servidor do Apollo
-- Dividir queries e resolver em pastas diferentes
-- Criar um tipo produto (id, nome, preco, desconto, precoComDesconto, categoria, disponivel)
-- Criar uma query umProduto que vai retornar um produto mockado
+- Configurar o servidor do Apollo - OK
+- Dividir queries e resolver em pastas diferentes - OK
+- Criar um tipo produto (id, nome, preco, desconto, precoComDesconto, categoria, disponivel) - OK
+- Criar uma query umProduto que vai retornar um produto mockado - OK
 
 ## Desafio 2
-- Criar uma query que retorne todos os produtos
-- Criar um resolver de precoComDesconto
+- Criar uma query que retorne todos os produtos - OK
+- Criar um resolver de precoComDesconto - OK
 
 ## Desafio 3
 - Implementar uma query que retorne um produto de acordo com o nome ou id do produto

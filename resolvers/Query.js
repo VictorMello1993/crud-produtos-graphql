@@ -1,3 +1,5 @@
+import { produtos } from "../data/data.js"
+
 export default {
     Query: {
         umProduto(){
@@ -10,6 +12,9 @@ export default {
                 categoria: "Eletrônicos",
                 disponivel: true
             }
-        }
+        },
+        todosProdutos(){
+            return produtos
+        }        
     }
 }
