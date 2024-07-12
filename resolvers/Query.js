@@ -22,6 +22,10 @@ export default {
             const produto = produtos.find(p => p.id === id || p.nome.toLocaleLowerCase().includes(String(nome).toLocaleLowerCase()));
 
             return produto
-        }        
+        },
+        obterProdutoPorCategoria(_, categoria) {
+            console.log(categoria)
+            return produtos.filter(p => p.categoria.toLowerCase().includes(String(categoria).toLowerCase()))
+        }     
     }
 }

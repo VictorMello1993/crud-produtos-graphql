@@ -9,7 +9,7 @@
 - Criar um resolver de precoComDesconto - OK
 
 ## Desafio 3
-- Implementar uma query que retorne um produto de acordo com o nome ou id do produto
+- Implementar uma query que retorne um produto de acordo com o nome ou id do produto - OK
 
 ## Desafio 4
 - Implementar uma query que retorne alguns produtos baseados em um critério de busca
