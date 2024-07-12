@@ -7,3 +7,8 @@ type Produto {
     categoria: String,
     disponivel: Boolean
 }
+
+input ProdutoFiltro {
+    id: Int
+    nome: String
+}

@@ -1,4 +1,5 @@
 type Query {
     umProduto : Produto
     todosProdutos: [Produto]
+    obterProduto(filtros: ProdutoFiltro!): Produto
 }

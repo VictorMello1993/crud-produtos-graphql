@@ -15,6 +15,13 @@ export default {
         },
         todosProdutos(){
             return produtos
+        },
+        obterProduto(_, {filtros}){
+            const {id, nome} = filtros                    
+
+            const produto = produtos.find(p => p.id === id || p.nome.toLocaleLowerCase().includes(String(nome).toLocaleLowerCase()));
+
+            return produto
         }        
     }
 }
