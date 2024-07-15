@@ -12,12 +12,12 @@
 - Implementar uma query que retorne um produto de acordo com o nome ou id do produto - OK
 
 ## Desafio 4
-- Implementar uma query que retorne alguns produtos baseados em um critério de busca
-- Buscar por: categoria, precoMenorQue, precoMaiorQue, desconto, descontoMaiorQue, precoEntre, disponivel
+- Implementar uma query que retorne alguns produtos baseados em um critério de busca 
+- Buscar por: categoria, precoMenorQue, precoMaiorQue, desconto, descontoMaiorQue, precoEntre, disponivel - OK
 
 ## Desafio 5
-- Criar uma mutation para criar um novo produto
-- Criar uma mutation para deletar um produto
+- Criar uma mutation para criar um novo produto - OK
+- Criar uma mutation para deletar um produto - OK
 
 ## Desafio 6
 - Criar uma mutation para alterar um produto

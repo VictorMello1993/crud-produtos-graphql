@@ -2,5 +2,5 @@ type Query {
     umProduto : Produto
     todosProdutos: [Produto]
     obterProduto(filtros: ProdutoFiltro!): Produto,
-    obterProdutoPorCategoria(categoria: Categoria): [Produto]
+    obterProdutos(filtros:ProdutosFiltro!): [Produto]!
 }

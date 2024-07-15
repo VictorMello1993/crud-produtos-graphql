@@ -1,6 +1,12 @@
 let id = 1
 
+const UNICODE_PROPERTY_ESCAPES_REGEX = /\p{Mn}/gu
+
 export const proximoId = () => id++
+export const removerAcentos = (texto) => texto.normalize("NFD").replace(UNICODE_PROPERTY_ESCAPES_REGEX, "")
+export const letrasMinusculas = (texto) => texto.toLowerCase()
+export const contemPalavras = (texto1, texto2) => letrasMinusculas(removerAcentos(texto1))
+                                                  .includes(letrasMinusculas(removerAcentos(String(texto2))))
 
 export const produtos = [
     {
