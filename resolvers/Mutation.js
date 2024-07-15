@@ -2,19 +2,14 @@ import { contemPalavras, produtos, proximoId } from "../data/data.js"
 
 export default {
   Mutation: {
-    novoProduto(_, {dados}) {
-      const {nome, preco, desconto, categoria, disponivel} = dados
-      
+    novoProduto(_, {dados}) {            
       const novoProduto = {
-        id: proximoId(),
-        nome,
-        preco,
-        desconto,
-        categoria,
-        disponivel,
-      }
+        id: proximoId(),        
+        disponivel: true,
+        ...dados
+      }      
 
-      produtos.push(novoProduto)
+      produtos.push(novoProduto)      
 
       return novoProduto
     },
@@ -44,7 +39,7 @@ export default {
       produtos[index] = {...produtos[index], ...dados}
 
       return produtos[index]
-      
+
     }
   }
 }

@@ -17,12 +17,18 @@ type Produto {
     disponivel: Boolean
 }
 
-input ProdutosInput {
+input NovoProdutoInput {
     nome: String,
-    preco: Float,
-    desconto: Float,    
-    categoria: Categoria,
+    preco: Float,    
+    categoria: Categoria        
+}
+
+input AlterarProdutoInput {
+    nome: String,
+    preco: Float,    
+    categoria: Categoria        
     disponivel: Boolean
+    desconto: Float
 }
 
 input ProdutoFiltro {
