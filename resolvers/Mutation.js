@@ -33,6 +33,18 @@ export default {
 
       return produtoASerRemovido
 
+    },
+    alterarProduto(_, {filtros, dados}){
+      const index = produtos.findIndex(p => p.id === filtros.id || contemPalavras(p.nome, filtros.nome))
+
+      if(index === -1) {
+        throw new Error('Produto não encontrado')
+      }
+
+      produtos[index] = {...produtos[index], ...dados}
+
+      return produtos[index]
+      
     }
   }
 }
