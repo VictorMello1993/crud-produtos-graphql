@@ -1,18 +1,29 @@
-import { contemPalavras, produtos, proximoId } from "../data/data.js"
+import { categorias, contemPalavras, letrasMinusculas, produtos, proximoIdProduto, removerAcentos } from "../data/data.js"
 
 export default {
   Mutation: {
-    novoProduto(_, {dados}) {            
+    novoProduto(_, {dados}) {
+      
+      const {nomeCategoria} = dados
+      
+      const categoria = categorias.find(c => letrasMinusculas(removerAcentos(c.nome)).includes(nomeCategoria))      
+                
       const novoProduto = {
-        id: proximoId(),        
+        id: proximoIdProduto(),        
         disponivel: true,
+        categoria_id: categoria.id,
         ...dados
       }      
+
+      if(!categoria) {
+        throw new Error('Categoria não encontrado')
+      }
 
       produtos.push(novoProduto)      
 
       return novoProduto
     },
+
     excluirProduto(_, {filtros}) {
       const {id, nome} = filtros
 
@@ -29,6 +40,7 @@ export default {
       return produtoASerRemovido
 
     },
+
     alterarProduto(_, {filtros, dados}){
       const index = produtos.findIndex(p => p.id === filtros.id || contemPalavras(p.nome, filtros.nome))
 
@@ -36,7 +48,20 @@ export default {
         throw new Error('Produto não encontrado')
       }
 
-      produtos[index] = {...produtos[index], ...dados}
+      const {nomeCategoria} = dados
+
+      const categoria = categorias.find(c => letrasMinusculas(removerAcentos(c.nome)).includes(nomeCategoria))
+
+      if(!categoria){
+        throw new Error('Categoria não encontrado')
+      }      
+
+      const produtoAtualizado = {
+        categoria_id: categoria.id,
+        ...dados
+      }
+
+      produtos[index] = {...produtos[index], ...produtoAtualizado}
 
       return produtos[index]
 

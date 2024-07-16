@@ -1,32 +1,23 @@
-enum Categoria {
-    ELETRONICOS
-    ESPORTES
-    ROUPAS
-    GAMES
-    FITNESS
-    PAPELARIA
-}
-
 type Produto {
     id: Int,
     nome: String,
     preco: Float,
     desconto: Float,
     precoComDesconto: Float,
-    categoria: String,
+    categoria: Categoria
     disponivel: Boolean
 }
 
 input NovoProdutoInput {
     nome: String,
     preco: Float,    
-    categoria: Categoria        
+    nomeCategoria: String
 }
 
 input AlterarProdutoInput {
     nome: String,
     preco: Float,    
-    categoria: Categoria        
+    nomeCategoria: String        
     disponivel: Boolean
     desconto: Float
 }
@@ -37,7 +28,7 @@ input ProdutoFiltro {
 }
 
 input ProdutosFiltro {
-    categoria: Categoria, 
+    nomeCategoria: String, 
     precoMenorQue: Float,
     precoMaiorQue: Float,
     desconto: Float,

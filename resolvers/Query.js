@@ -24,12 +24,12 @@ export default {
             return produto
         },
         obterProdutos(_, {filtros}) {
-            const {categoria, precoMenorQue,precoMaiorQue,desconto, descontoMaiorQue, disponivel} = filtros
+            const {nomeCategoria, precoMenorQue,precoMaiorQue,desconto, descontoMaiorQue, disponivel} = filtros
             let produtosSelecionados = [...produtos]            
 
             const filtrarPorValorExato = (campo, valor) => {
                 if(campo.includes('categoria')){
-                    return produtosSelecionados.filter(p => letrasMinusculas(removerAcentos(p[campo])) === valor)
+                    return produtosSelecionados.filter(p => letrasMinusculas(removerAcentos(p[campo].nome)).includes(valor))
                 }
 
                 return produtosSelecionados.filter(p => p[campo] === valor)
@@ -43,8 +43,10 @@ export default {
                 return produtosSelecionados.filter(p => p[campo] < valor)
             }
 
-            if(categoria !== undefined) {               
-                produtosSelecionados = filtrarPorValorExato('categoria', letrasMinusculas(removerAcentos(categoria)))
+            console.log(letrasMinusculas(removerAcentos(nomeCategoria)))
+
+            if(nomeCategoria !== undefined) {               
+                produtosSelecionados = filtrarPorValorExato('categoria', letrasMinusculas(removerAcentos(nomeCategoria)))
             }
 
             if(precoMenorQue !== undefined) {

@@ -1,0 +1,6 @@
+type Categoria {
+    id: Int
+    nome: String
+    desconto: Float
+    localizacao: String
+}

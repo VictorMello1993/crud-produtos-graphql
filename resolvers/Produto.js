@@ -1,3 +1,5 @@
+import { categorias } from "../data/data.js"
+
 export default {
     Produto: {
         precoComDesconto(produto) {
@@ -8,6 +10,9 @@ export default {
             }
 
             return null
+        },
+        categoria(produto) {
+            return categorias.find(c => c.id === produto.categoria_id)
         }
     }
 }
