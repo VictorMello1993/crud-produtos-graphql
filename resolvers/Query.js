@@ -1,4 +1,4 @@
-import { letrasMinusculas, produtos, removerAcentos } from "../data/data.js"
+import { categorias, contemPalavras, letrasMinusculas, produtos, removerAcentos } from "../data/data.js"
 
 export default {
     Query: {
@@ -29,7 +29,11 @@ export default {
 
             const filtrarPorValorExato = (campo, valor) => {
                 if(campo.includes('categoria')){
-                    return produtosSelecionados.filter(p => letrasMinusculas(removerAcentos(p[campo].nome)).includes(valor))
+                    const categoria = categorias.find(c => contemPalavras(c.nome, valor))
+                    
+                    if(categoria){
+                        return produtosSelecionados.filter(p => p.categoria_id === categoria.id)                        
+                    }
                 }
 
                 return produtosSelecionados.filter(p => p[campo] === valor)
@@ -42,8 +46,6 @@ export default {
             const filtrarPorValorMenorQue = (campo, valor) => {
                 return produtosSelecionados.filter(p => p[campo] < valor)
             }
-
-            console.log(letrasMinusculas(removerAcentos(nomeCategoria)))
 
             if(nomeCategoria !== undefined) {               
                 produtosSelecionados = filtrarPorValorExato('categoria', letrasMinusculas(removerAcentos(nomeCategoria)))

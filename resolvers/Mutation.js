@@ -6,8 +6,8 @@ export default {
       
       const {nomeCategoria} = dados
       
-      const categoria = categorias.find(c => letrasMinusculas(removerAcentos(c.nome)).includes(nomeCategoria))      
-                
+      const categoria = categorias.find(c => contemPalavras(c.nome, nomeCategoria))      
+      
       const novoProduto = {
         id: proximoIdProduto(),        
         disponivel: true,
@@ -50,7 +50,7 @@ export default {
 
       const {nomeCategoria} = dados
 
-      const categoria = categorias.find(c => letrasMinusculas(removerAcentos(c.nome)).includes(nomeCategoria))
+      const categoria = categorias.find(c => contemPalavras(c.nome, nomeCategoria))
 
       if(!categoria){
         throw new Error('Categoria não encontrado')
