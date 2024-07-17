@@ -67,9 +67,8 @@ export default {
 
     },
 
-    setCategoria(_, {filtros, dados}){
-      let categoriasSelecionadas = [...categorias]
-      const index = categoriasSelecionadas.findIndex(c => filtros.id === c.id || contemPalavras(filtros.nome, c.nome))
+    setCategoria(_, {dados}){
+      const index = categorias.findIndex(c => dados.id === c.id || contemPalavras(dados.nome, c.nome))
 
       if(index === -1){
         const novaCategoria = {
@@ -82,30 +81,21 @@ export default {
         return novaCategoria
       }
 
-      const {id, nome} = filtros
+      const {nome, desconto, localizacao} = dados
 
-      const filtrarPorValorExato = (campo, valor) => {
-        if(typeof valor === 'string'){
-            return categoriasSelecionadas.filter(c => contemPalavras(valor, c.nome))
-        }
+      if(nome) {               
+        categorias[index].nome = nome
+     }
 
-        return categoriasSelecionadas.filter(p => p[campo] === valor)
-    }
+     if(desconto) {               
+        categorias[index].desconto = desconto
+     }
 
-    if(id !== undefined){
-      categoriasSelecionadas = filtrarPorValorExato('id', id)
-    }
+     if(localizacao) {               
+        categorias[index].localizacao = localizacao
+     }
 
-    if(nome  !== undefined) {               
-        categoriasSelecionadas = filtrarPorValorExato('nome', nome)
-    }
-
-      categoriasSelecionadas[index] = {...categoriasSelecionadas[index], ...dados }
-
-      categorias = [...categoriasSelecionadas]
-
-      return categoriasSelecionadas[index]
-
+     return categorias[index]
     },
 
     excluirCategoria(_, {filtros}){

@@ -2,6 +2,6 @@ type Mutation {
     novoProduto(dados: NovoProdutoInput!): Produto!
     excluirProduto(filtros: ProdutoFiltro!): Produto!
     alterarProduto(filtros: ProdutoFiltro!, dados: AlterarProdutoInput!): Produto!
-    setCategoria(filtros: CategoriaFiltro!, dados: CategoriaInput!): Categoria!
+    setCategoria(dados: CategoriaInput!): Categoria!
     excluirCategoria(filtros: CategoriaFiltro!): Categoria!
 }

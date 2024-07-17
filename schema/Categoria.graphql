@@ -6,6 +6,7 @@ type Categoria {
 }
 
 input CategoriaInput {
+    id: Int
     nome: String,
     localizacao: String
     desconto: Float
