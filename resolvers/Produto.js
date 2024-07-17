@@ -9,15 +9,11 @@ export default {
 
             const categoria = categorias.find(c => c.id === produto.categoria_id)
             
-            if(categoria && categoria.desconto){
+            if(categoria && categoria.desconto){                
                 descontoTotal += categoria.desconto
             }
 
-            if(descontoTotal > 0) {
-                return preco * (1 - (descontoTotal / 100))
-            }
-
-            return preco
+            return preco * (1 - (descontoTotal / 100))
         },
         categoria(produto) {
             return categorias.find(c => c.id === produto.categoria_id)

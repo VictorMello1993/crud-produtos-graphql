@@ -67,8 +67,9 @@ export default {
 
     },
 
-    setCategoria(_, {dados}){
-      const index = categorias.findIndex(c => contemPalavras(dados.nome, c.nome))
+    setCategoria(_, {filtros, dados}){
+      let categoriasSelecionadas = [...categorias]
+      const index = categoriasSelecionadas.findIndex(c => filtros.id === c.id || contemPalavras(filtros.nome, c.nome))
 
       if(index === -1){
         const novaCategoria = {
@@ -81,9 +82,29 @@ export default {
         return novaCategoria
       }
 
-      categorias[index] = {...categorias[index], ...dados }
+      const {id, nome} = filtros
 
-      return categorias[index]
+      const filtrarPorValorExato = (campo, valor) => {
+        if(typeof valor === 'string'){
+            return categoriasSelecionadas.filter(c => contemPalavras(valor, c.nome))
+        }
+
+        return categoriasSelecionadas.filter(p => p[campo] === valor)
+    }
+
+    if(id !== undefined){
+      categoriasSelecionadas = filtrarPorValorExato('id', id)
+    }
+
+    if(nome  !== undefined) {               
+        categoriasSelecionadas = filtrarPorValorExato('nome', nome)
+    }
+
+      categoriasSelecionadas[index] = {...categoriasSelecionadas[index], ...dados }
+
+      categorias = [...categoriasSelecionadas]
+
+      return categoriasSelecionadas[index]
 
     },
 
