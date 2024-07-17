@@ -23,17 +23,17 @@
 - Criar uma mutation para alterar um produto - OK
 
 ## Desafio 7
-- Criar um tipo Categoria (id, nome, desconto, localizacao)
-- Criar 3 categorias que começam com o id 100
+- Criar um tipo Categoria (id, nome, desconto, localizacao) - OK
+- Criar 3 categorias que começam com o id 100 - OK
 100 - informatica - corredor1
 101 - eletrodomesticos - corredor2
 102 - materiais escolares - corredor3
-- Fazer a associação do tipo Produto e do tipo Categoria
+- Fazer a associação do tipo Produto e do tipo Categoria - OK
 - Refatorar os códigos existentes pra que eles continuem funcionando
 
 ## Desafio 8
-- Criar uma mutation chamada setCategoria
-- Criar uma mutation para deletar uma categoria
+- Criar uma mutation chamada setCategoria - OK
+- Criar uma mutation para deletar uma categoria - OK
 
 ## Desafio 9
 - Somar o valor do desconto da categoria com o desconto do produto na hora de calcular o preço com desconto

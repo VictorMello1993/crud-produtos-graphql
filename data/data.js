@@ -7,8 +7,14 @@ export const proximoIdProduto = () => id++
 export const proximoIdCategoria = () => idCategoria++
 export const removerAcentos = (texto) => texto.normalize("NFD").replace(UNICODE_PROPERTY_ESCAPES_REGEX, "")
 export const letrasMinusculas = (texto) => texto.toLowerCase()
-export const contemPalavras = (texto1, texto2) => letrasMinusculas(removerAcentos(texto1))
-                                                  .includes(letrasMinusculas(removerAcentos(String(texto2))))
+
+export const contemPalavras = (texto1, texto2) => {
+    if(texto1 && texto2){
+        return letrasMinusculas(removerAcentos(texto2)).includes(letrasMinusculas(removerAcentos(String(texto1))))
+    }
+    return false
+}
+                                                  
 
 export const produtos = [
     {

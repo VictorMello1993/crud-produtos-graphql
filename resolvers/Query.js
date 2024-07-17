@@ -72,6 +72,9 @@ export default {
             }
 
             return produtosSelecionados
+        },
+        todasCategorias() {
+            return categorias
         }     
     }
 }

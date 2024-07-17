@@ -1,4 +1,4 @@
-import { categorias, contemPalavras, letrasMinusculas, produtos, proximoIdProduto, removerAcentos } from "../data/data.js"
+import { categorias, contemPalavras, letrasMinusculas, produtos, proximoIdCategoria, proximoIdProduto, removerAcentos } from "../data/data.js"
 
 export default {
   Mutation: {
@@ -6,18 +6,18 @@ export default {
       
       const {nomeCategoria} = dados
       
-      const categoria = categorias.find(c => contemPalavras(c.nome, nomeCategoria))      
+      const categoria = categorias.find(c => contemPalavras(nomeCategoria, c.nome))      
       
+      if(!categoria) {
+        throw new Error('Categoria não encontrado')
+      }
+
       const novoProduto = {
         id: proximoIdProduto(),        
         disponivel: true,
         categoria_id: categoria.id,
         ...dados
       }      
-
-      if(!categoria) {
-        throw new Error('Categoria não encontrado')
-      }
 
       produtos.push(novoProduto)      
 
@@ -27,7 +27,7 @@ export default {
     excluirProduto(_, {filtros}) {
       const {id, nome} = filtros
 
-      const index = produtos.findIndex(p => p.id === id || contemPalavras(p.nome, nome))
+      const index = produtos.findIndex(p => p.id === id || contemPalavras(nome, p.nome))
 
       if(index === -1) {
         throw new Error('Produto não encontrado')
@@ -42,7 +42,7 @@ export default {
     },
 
     alterarProduto(_, {filtros, dados}){
-      const index = produtos.findIndex(p => p.id === filtros.id || contemPalavras(p.nome, filtros.nome))
+      const index = produtos.findIndex(p => p.id === filtros.id || contemPalavras(filtros.nome, p.nome))
 
       if(index === -1) {
         throw new Error('Produto não encontrado')
@@ -50,7 +50,7 @@ export default {
 
       const {nomeCategoria} = dados
 
-      const categoria = categorias.find(c => contemPalavras(c.nome, nomeCategoria))
+      const categoria = categorias.find(c => contemPalavras(nomeCategoria, c.nome))
 
       if(!categoria){
         throw new Error('Categoria não encontrado')
@@ -65,6 +65,41 @@ export default {
 
       return produtos[index]
 
+    },
+
+    setCategoria(_, {dados}){
+      const index = categorias.findIndex(c => contemPalavras(dados.nome, c.nome))
+
+      if(index === -1){
+        const novaCategoria = {
+          id: proximoIdCategoria(),
+          ...dados          
+        }
+
+        categorias.push(novaCategoria)
+
+        return novaCategoria
+      }
+
+      categorias[index] = {...categorias[index], ...dados }
+
+      return categorias[index]
+
+    },
+
+    excluirCategoria(_, {filtros}){
+      const {id, nome} = filtros
+      const index = categorias.findIndex(c => c.id === id || contemPalavras(nome, c.nome))
+
+      if(index === -1) {
+        throw new Error ('Categoria não encontrada')
+      }
+
+      const categoriaASerExcluida = categorias[index]
+
+      categorias.splice(index, 1)
+
+      return categoriaASerExcluida
     }
   }
 }

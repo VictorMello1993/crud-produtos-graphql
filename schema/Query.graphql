@@ -3,4 +3,5 @@ type Query {
     todosProdutos: [Produto]
     obterProduto(filtros: ProdutoFiltro!): Produto,
     obterProdutos(filtros:ProdutosFiltro!): [Produto]!
+    todasCategorias: [Categoria]
 }

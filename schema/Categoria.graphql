@@ -4,3 +4,14 @@ type Categoria {
     desconto: Float
     localizacao: String
 }
+
+input CategoriaInput {
+    nome: String,
+    localizacao: String
+    desconto: Float
+}
+
+input CategoriaFiltro {
+    id: Int
+    nome: String
+}
