@@ -1,4 +1,4 @@
-import { categorias } from "../data/data.js"
+import { categorias } from "../data/categoria.js"
 
 export default {
     Produto: {

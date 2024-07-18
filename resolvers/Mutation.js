@@ -1,4 +1,6 @@
-import { categorias, contemPalavras, letrasMinusculas, produtos, proximoIdCategoria, proximoIdProduto, removerAcentos } from "../data/data.js"
+import { produtos, proximoIdProduto } from "../data/produto.js"
+import { categorias, proximoIdCategoria } from "../data/categoria.js"
+import { contemPalavras } from "../utils/utils.js"
 
 export default {
   Mutation: {
@@ -56,6 +58,10 @@ export default {
         throw new Error('Categoria não encontrado')
       }      
 
+      if(produtos[index].categoria_id !== categoria.id){
+        throw new Error('Produto não pertence à categoria especificada')
+      }
+
       const produtoAtualizado = {
         categoria_id: categoria.id,
         ...dados
@@ -81,9 +87,9 @@ export default {
         return novaCategoria
       }
 
-      const {nome, desconto, localizacao} = dados
+     const {nome, desconto, localizacao} = dados
 
-      if(nome) {               
+     if(nome) {               
         categorias[index].nome = nome
      }
 

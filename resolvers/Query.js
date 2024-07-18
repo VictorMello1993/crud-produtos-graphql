@@ -1,4 +1,6 @@
-import { categorias, contemPalavras, letrasMinusculas, produtos, removerAcentos } from "../data/data.js"
+import { produtos } from "../data/produto.js"
+import { categorias } from "../data/categoria.js"
+import { filtrarPorValorExato, filtrarPorValorMaiorQue, filtrarPorValorMenorQue } from "../utils/utils.js"
 
 export default {
     Query: {
@@ -27,28 +29,8 @@ export default {
             const {nomeCategoria, precoMenorQue,precoMaiorQue,desconto, descontoMaiorQue, disponivel} = filtros
             let produtosSelecionados = [...produtos]            
 
-            const filtrarPorValorExato = (campo, valor) => {
-                if(campo.includes('categoria')){
-                    const categoria = categorias.find(c => contemPalavras(c.nome, valor))
-                    
-                    if(categoria){
-                        return produtosSelecionados.filter(p => p.categoria_id === categoria.id)                        
-                    }
-                }
-
-                return produtosSelecionados.filter(p => p[campo] === valor)
-            }
-
-            const filtrarPorValorMaiorQue = (campo, valor) => {
-                return produtosSelecionados.filter(p => p[campo] > valor)
-            }
-
-            const filtrarPorValorMenorQue = (campo, valor) => {
-                return produtosSelecionados.filter(p => p[campo] < valor)
-            }
-
             if(nomeCategoria !== undefined) {               
-                produtosSelecionados = filtrarPorValorExato('categoria', letrasMinusculas(removerAcentos(nomeCategoria)))
+                produtosSelecionados = filtrarPorValorExato('categoria', nomeCategoria)
             }
 
             if(precoMenorQue !== undefined) {
@@ -72,7 +54,7 @@ export default {
             }
 
             return produtosSelecionados
-        },
+        },        
         todasCategorias() {
             return categorias
         }     
