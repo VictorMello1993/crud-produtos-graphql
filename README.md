@@ -29,11 +29,11 @@
 101 - eletrodomesticos - corredor2
 102 - materiais escolares - corredor3
 - Fazer a associação do tipo Produto e do tipo Categoria - OK
-- Refatorar os códigos existentes pra que eles continuem funcionando
+- Refatorar os códigos existentes pra que eles continuem funcionando - OK
 
 ## Desafio 8
 - Criar uma mutation chamada setCategoria - OK
 - Criar uma mutation para deletar uma categoria - OK
 
 ## Desafio 9
-- Somar o valor do desconto da categoria com o desconto do produto na hora de calcular o preço com desconto
+- Somar o valor do desconto da categoria com o desconto do produto na hora de calcular o preço com desconto - OK

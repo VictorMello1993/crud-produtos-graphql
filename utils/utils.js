@@ -21,7 +21,7 @@ export const filtrarProdutoPorValorExato = (campo, valor) => {
     if(categoria){
         return produtos.filter(p => p.categoria_id === categoria.id)                        
       }
-
+      
       return produtos.filter(p => contemPalavras(valor, p[campo]))
   }
 
