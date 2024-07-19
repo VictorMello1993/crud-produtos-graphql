@@ -13,22 +13,25 @@ export const contemPalavras = (texto1, texto2) => {
   return false
 }
 
-export const filtrarPorValorExato = (campo, valor) => {
-  if(campo.includes('categoria')){
-      const categoria = categorias.find(c => contemPalavras(c.nome, valor))
-      
-      if(categoria){
-          return produtos.filter(p => p.categoria_id === categoria.id)                        
+export const filtrarProdutoPorValorExato = (campo, valor) => {
+  if(typeof valor === 'string'){
+
+    const categoria = categorias.find(c => contemPalavras(valor, c.nome))
+
+    if(categoria){
+        return produtos.filter(p => p.categoria_id === categoria.id)                        
       }
+
+      return produtos.filter(p => contemPalavras(valor, p[campo]))
   }
 
   return produtos.filter(p => p[campo] === valor)
 }
 
-export const filtrarPorValorMaiorQue = (campo, valor) => {
+export const filtrarProdutoPorValorMaiorQue = (campo, valor) => {
   return produtos.filter(p => p[campo] > valor)
 }
 
-export const filtrarPorValorMenorQue = (campo, valor) => {
+export const filtrarProdutoPorValorMenorQue = (campo, valor) => {
   return produtos.filter(p => p[campo] < valor)
 }

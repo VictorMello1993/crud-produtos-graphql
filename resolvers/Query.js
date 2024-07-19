@@ -1,6 +1,6 @@
 import { produtos } from "../data/produto.js"
 import { categorias } from "../data/categoria.js"
-import { filtrarPorValorExato, filtrarPorValorMaiorQue, filtrarPorValorMenorQue } from "../utils/utils.js"
+import { filtrarProdutoPorValorExato, filtrarProdutoPorValorMaiorQue, filtrarProdutoPorValorMenorQue } from "../utils/utils.js"
 
 export default {
     Query: {
@@ -30,27 +30,27 @@ export default {
             let produtosSelecionados = [...produtos]            
 
             if(nomeCategoria !== undefined) {               
-                produtosSelecionados = filtrarPorValorExato('categoria', nomeCategoria)
+                produtosSelecionados = filtrarProdutoPorValorExato('categoria', nomeCategoria)
             }
 
             if(precoMenorQue !== undefined) {
-                produtosSelecionados = filtrarPorValorMenorQue('preco', precoMenorQue)
+                produtosSelecionados = filtrarProdutoPorValorMenorQue('preco', precoMenorQue)
             }
 
             if(precoMaiorQue !== undefined) {
-                produtosSelecionados = filtrarPorValorMaiorQue('preco', precoMaiorQue)
+                produtosSelecionados = filtrarProdutoPorValorMaiorQue('preco', precoMaiorQue)
             }
 
             if(desconto !== undefined) {
-                produtosSelecionados = filtrarPorValorExato('desconto', desconto)
+                produtosSelecionados = filtrarProdutoPorValorExato('desconto', desconto)
             }
 
             if(descontoMaiorQue !== undefined) {
-                produtosSelecionados = filtrarPorValorExato('desconto', descontoMaiorQue)
+                produtosSelecionados = filtrarProdutoPorValorExato('desconto', descontoMaiorQue)
             }
 
             if(disponivel !== undefined) {
-                produtosSelecionados = filtrarPorValorExato('disponivel', disponivel)
+                produtosSelecionados = filtrarProdutoPorValorExato('disponivel', disponivel)
             }
 
             return produtosSelecionados
